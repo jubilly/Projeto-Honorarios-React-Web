@@ -1,6 +1,5 @@
 import React from 'react'
-
-import { Router, Switch, Route } from 'react-router'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import Login from '../pages/login'
 import Register from '../pages/register'
@@ -9,21 +8,30 @@ import ForgotPassword from '../pages/forgot-password'
 import NotFound from '../notfound'
 import MyHonorarios from '../pages/my-honorarios'
 import MyHonorariosDetailed from '../pages/my-honorarios-detailed'
-import {history} from '../history'
+import CalcHonorarios from '../pages/calc-honorarios/CalcHonorarios'
+import HonorariosNews from '../pages/calc-honorarios/HonorariosNew'
+import HonorariosFilters from '../pages/calc-honorarios/HonorariosFilters'
+import HonorariosHistory from '../pages/calc-honorarios/HonorariosFilters'
+import HonorariosFormulas from '../pages/my-honorarios/MyHonorarios'
 
 const Routes = () => (
-    <Router history={history}>
+    <BrowserRouter>
         <Switch>
             <Route component={Login} exact path="/login"/>
             <Route component={Register} exact path="/register"/>
             <Route component={ForgotPassword} exact path="/forgot-password"/>
+            <Route component={CalcHonorarios} exact path="/calc-honorarios"/>
+            <Route component={HonorariosNews} exact path="/new-honorarios"/>
+            <Route component={HonorariosFilters} exact path="/honorario-filters"/>
+            <Route component={HonorariosFormulas} exact path="/honorarios-formulas"/>
+            <Route component={HonorariosHistory} exact path="/honorarios-history"/>
             <Route component={MyHonorarios} exact path="/my-honorarios"/>
             <Route component={MyHonorariosDetailed} exact path="/my-honorarios-detailed"/>
             <Route component={Home} exact path="/"/>
             <Route component={NotFound}/>
  
         </Switch>
-    </Router>
+    </BrowserRouter>
 )
 
 export default Routes

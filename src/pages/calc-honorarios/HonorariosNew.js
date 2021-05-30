@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import baseURL from '../services/api';
+import React, { Component } from 'react'
 import Header from './../header/Header';
 import Menu from './../header/Menu';
+import baseURL from '../services/api';
 
-export default class Home extends Component {
-    constructor(props) {
+class HonorariosNews extends Component {
+    constructor(props){
         super(props);
         this.state = {
             apiData:[],
@@ -15,10 +15,10 @@ export default class Home extends Component {
             handleLogout:'',
             showMenuInfo: '',
             isMenuOpen: false
-        };
+        }
         this.onMenuToggle = this.onMenuToggle.bind(this)
-      }
 
+    }
     componentDidMount = async () =>{
         var usuarioLogado = '';
         if(localStorage.length > 0){
@@ -45,7 +45,9 @@ export default class Home extends Component {
     onMenuToggle() {
         this.setState({isMenuOpen: !this.state.isMenuOpen})
     }
-
+    addNewCalcArea(){
+        alert('oi')
+    }
     render(){
         var data = this.state.apiData;
         let dataDisplay = data.map(function(jsonData, index){
@@ -57,8 +59,9 @@ export default class Home extends Component {
                 </>
             )
         })
+        
         return (
-        <>
+            <>
             <Header
                 status={this.state.status}
                 userInfo={dataDisplay}
@@ -72,9 +75,37 @@ export default class Home extends Component {
                 onMenuToggle={this.onMenuToggle}
                 isMenuOpen={this.state.isMenuOpen}
             />
-
+            <div className="new_calc">
+                <div className="new_calc_input_group">
+                    <div className="new_calc_titles">
+                        <label className="new_calc_title">Digite o nome do Cálculo</label>
+                        <input className="new_calc_input" placeholder="Nome do Cálculo"/>
+                    </div>
+                    <div className="new_calc_titles">
+                        <label className="new_calc_title">Digite a data</label>
+                        <input className="new_calc_input" placeholder="Data"/>
+                    </div>
+                </div>
+                <hr className="new_calc_divisor"></hr>
+                <div className="new_calc_area">
+                    <div className="new_calc_column">
+                        <span className="new_calc_column-name">
+                            <label>Coluna</label>
+                            <button className="new_calc__area-button" onClick={this.addNewCalcArea}> + </button>
+                        </span>
+                        <div className="new_calc_column__group">
+                            <input className="new_calc_column-input" placeholder="Digite o nome da coluna"/>
+                            <input className="new_calc_column-input" placeholder="Digite o valor da coluna"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="new_calc new_calc--alignment">
+                <button className="new_calc_btn new_calc_btn--salve">Salvar</button>
+                <button className="new_calc_btn new_calc_btn--clean">Limpar</button>
+            </div>
         </>
         )
     }
-
 }
+export default HonorariosNews

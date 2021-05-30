@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import baseURL from '../services/api';
 import Header from './../header/Header';
 import Menu from './../header/Menu';
+import HonorariosFilters from './HonorariosFilters';
+import './honorarios.css'
 
-export default class Home extends Component {
+export default class CalcHonorarios extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -72,7 +74,7 @@ export default class Home extends Component {
                 onMenuToggle={this.onMenuToggle}
                 isMenuOpen={this.state.isMenuOpen}
             />
-
+            <HonorariosFilters />
         </>
         )
     }
