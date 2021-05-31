@@ -8,7 +8,7 @@ body * {
 
 .header {
     height: 100px;
-    background-color: rgba(46, 139, 87, 0.9);
+    background-color: #0d5e31;
     margin-bottom: 110px;
     padding: 20px 50px;
     display: flex;
@@ -22,6 +22,8 @@ body * {
 }
 .header__name--color{
     color: #fff;
+    display: inline;
+    width: auto;
 }
 .footer {
     height: 80px;
@@ -61,6 +63,7 @@ body * {
 
 .header__userinfo {
     line-height: 40px;
+    width: 30%;
 }
 
 
@@ -83,8 +86,7 @@ body * {
     color: #fff;
     font-weight: bold;
     text-align: right;
-    width: 100%;
-    display: block;
+    margin-left: 25px;
 }
 
 .menuToggle {
@@ -92,7 +94,7 @@ body * {
     height: 100%;
     position: absolute;
     top: 0;
-    left: -320px;
+    left: -340px;
     -webkit-transform: translateX(0);
     transform: translateX(0);
     -webkit-transition: .3s ease all;
@@ -100,15 +102,17 @@ body * {
     background: #fcfcfc;
     padding: 10px;
     box-shadow: #000 2px 2px 14px;
+    z-index: 2;
 }
 
 .menuToggle--open{
-    -webkit-transform: translateX(320px);
-    transform: translateX(320px);
+    -webkit-transform: translateX(340px);
+    transform: translateX(340px);
 }
 
 .menuToggle__element {
     margin-bottom: 20px;
+    padding: 0 10px;
 }
 
 .menuToggle__element a {
@@ -121,15 +125,17 @@ body * {
     padding: 10px 0;
 }
 
+.menuToggle__element:hover,
 .menuToggle__element a:hover{
-    background: #429667;
+    background: #0d5e31;
     color: #fff;
 }
+
 
 .menuToggle__header {
     display: flex;
     justify-content: space-between;
-    background: #429667;
+    background: #0d5e31;
     font-size: 1.8rem;
     padding: 10px;
     margin-bottom: 20px;
@@ -143,4 +149,18 @@ body * {
     font-size: 1.5rem;
     color: #fff;
     cursor: pointer;
+}
+@media (max-width:767px){
+    .header {
+        padding: 20px 10px;
+    }
+    .logo img {
+        width: 160px;
+        height: 30px;
+    }
+    .header__userinfo {
+        line-height: 40px;
+        width: 50%;
+        text-align: right;
+    }
 }

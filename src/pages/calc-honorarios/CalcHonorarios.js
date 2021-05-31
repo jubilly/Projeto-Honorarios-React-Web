@@ -50,12 +50,10 @@ export default class CalcHonorarios extends Component {
 
     render(){
         var data = this.state.apiData;
-        let dataDisplay = data.map(function(jsonData, index){
+        let userInfo = data.map(function(jsonData, index){
             return(
                 <>
-                    <p className="header__name--color">
-                        Bem-vindo(a), <span className="header__name">{jsonData.nome}</span>
-                    </p>
+                    {jsonData.nome}
                 </>
             )
         })
@@ -63,7 +61,7 @@ export default class CalcHonorarios extends Component {
         <>
             <Header
                 status={this.state.status}
-                userInfo={dataDisplay}
+                userInfo={userInfo}
                 handleLogout={this.handleLogout}
                 showMenuInfo={true}
                 MenuToggle={true}

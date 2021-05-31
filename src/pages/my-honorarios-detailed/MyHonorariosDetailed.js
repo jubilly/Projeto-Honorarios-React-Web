@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './../header/Header';
 import Menu from './../header/Menu';
 import baseURL from '../services/api';
+import { Link } from 'react-router-dom';
 
 
 class MyHonorariosDetailed extends Component {
@@ -47,12 +48,10 @@ onMenuToggle() {
 }
   render () {
     var data = this.state.apiData;
-    let dataDisplay = data.map(function(jsonData, index){
+    let userInfo = data.map(function(jsonData, index){
         return(
             <>
-                <p className="header__name--color">
-                    Bem-vindo(a), <span className="header__name">{jsonData.nome}</span>
-                </p>
+            {jsonData.nome}
             </>
         )
     })
@@ -60,7 +59,7 @@ onMenuToggle() {
         <>
         <Header
             status={this.state.status}
-            userInfo={dataDisplay}
+            userInfo={userInfo}
             handleLogout={this.handleLogout}
             showMenuInfo={true}
             MenuToggle={true}
@@ -74,11 +73,11 @@ onMenuToggle() {
         <h1 className="honorarios__title">Meus Honorarios Detalhados </h1>
         <div className="honorarios__content">
             <label className="honorarios__name">Cálculo de honorários do cliente A</label>
-            <label className="honorarios__author">Lorem Ipsum</label>
-            <a href="my-honorarios-detailed" className="honorarios__button">Ver Detalhes</a>
+            <label className="honorarios__author">{userInfo}</label>
+            <Link to="my-honorarios-detailed" className="honorarios__button">Ver Detalhes</Link>
         </div>
         <div className="honorarios__back">
-              <a href="my-honorarios" className="register__link">&#x2190; Voltar para todos os cálculos</a> 
+              <Link to="my-honorarios" className="register__link">&#x2190; Voltar para todos os cálculos</Link> 
         </div>
         </>
       )

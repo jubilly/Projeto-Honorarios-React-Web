@@ -47,21 +47,19 @@ onMenuToggle() {
 }
 
 render(){
-  var data = this.state.apiData;
-  let dataDisplay = data.map(function(jsonData, index){
-      return(
-          <>
-              <p className="header__name--color">
-                  Bem-vindo(a), <span className="header__name">{jsonData.nome}</span>
-              </p>
-          </>
-      )
-  })
+    var data = this.state.apiData;
+    let userInfo = data.map(function(jsonData, index){
+        return(
+            <>
+                {jsonData.nome}
+            </>
+        )
+    })
     return (
       <>
         <Header
             status={this.state.status}
-            userInfo={dataDisplay}
+            userInfo={userInfo}
             handleLogout={this.handleLogout}
             showMenuInfo={true}
             MenuToggle={true}
@@ -75,7 +73,7 @@ render(){
        <h1 className="honorarios__title">Meus Honorarios</h1>
        <div className="honorarios__content">
            <label className="honorarios__name">Cálculo de honorários do cliente A</label>
-           <label className="honorarios__author">Lorem Ipsum</label>
+           <label className="honorarios__author">{userInfo}</label>
            <a href="my-honorarios-detailed" className="honorarios__button">Ver Detalhes</a>
        </div>
        <div className="honorarios__back">

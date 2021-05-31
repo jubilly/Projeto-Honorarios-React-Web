@@ -21,7 +21,10 @@ class Header extends Component {
                         </Link>
                     </div>
                     <div className={`header__userinfo ${this.props.showMenuInfo === true ? 'showMenu' : 'noShow'}`}>
-                        {this.props.userInfo}
+                        <p className="header__name--color">
+                            Bem-vindo(a), <span className="header__name">{this.props.userInfo}</span>
+                        </p>
+                        
                         <Link to="/login" className="header__logout" onClick={this.props.handleLogout}>Sair</Link>
                     </div>
                 </div>
