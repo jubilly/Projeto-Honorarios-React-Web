@@ -10,7 +10,8 @@ import MyHonorarios from '../pages/my-honorarios'
 import MyHonorariosDetailed from '../pages/my-honorarios-detailed'
 import CalcHonorarios from '../pages/calc-honorarios/CalcHonorarios'
 import HonorariosNews from '../pages/calc-honorarios/HonorariosNew'
-import HonorariosHistory from '../pages/calc-honorarios/HonorariosFilters'
+import HonorariosHistory from '../pages/calc-honorarios/HonorariosOptions'
+import ListHonorarios from '../pages/ListHonorarios/ListHonorarios'
 
 const Routes = () => (
     <BrowserRouter>
@@ -18,11 +19,12 @@ const Routes = () => (
             <Route component={Login} exact path="/login"/>
             <Route component={Register} exact path="/register"/>
             <Route component={ForgotPassword} exact path="/forgot-password"/>
-            <Route component={CalcHonorarios} exact path="/calc-honorarios"/>
+            <Route component={CalcHonorarios} exact path="/honorarios"/>
             <Route component={HonorariosNews} exact path="/new-honorarios"/>
             <Route component={HonorariosHistory} exact path="/honorarios-history"/>
             <Route component={MyHonorarios} exact path="/my-honorarios"/>
-            <Route component={MyHonorariosDetailed} exact path="/my-honorarios-detailed"/>
+            <Route component={MyHonorariosDetailed} exact path="/standard-honorarios"/>
+            <Route component={ListHonorarios} exact path="/honorario/:id" />
             <Route component={Home} exact path="/"/>
             <Route component={NotFound}/>
  

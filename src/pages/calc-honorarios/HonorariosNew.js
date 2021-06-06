@@ -73,10 +73,6 @@ class HonorariosNews extends Component {
                 isMenuOpen={this.state.isMenuOpen}
             />
            <HonorarioGroup />
-            <div className="new_calc new_calc--alignment">
-                <button className="new_calc_btn new_calc_btn--salve">Salvar</button>
-                <button className="new_calc_btn new_calc_btn--clean">Limpar</button>
-            </div>
         </>
         )
     }

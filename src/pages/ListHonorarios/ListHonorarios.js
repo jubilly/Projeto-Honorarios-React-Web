@@ -2,10 +2,19 @@ import React, { Component } from 'react';
 import Header from './../header/Header';
 import Menu from './../header/Menu';
 import baseURL from '../services/api';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
+const Id = () =>{
+     const {id} = useParams();
+     alert(id)
+     return(
+         <>
+         <p>{id}</p>
+         </>
+     )
+ }
 
-class MyHonorariosDetailed extends Component {
+class ListHonorarios extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -46,7 +55,8 @@ handleLogout = () => {
 onMenuToggle() {
   this.setState({isMenuOpen: !this.state.isMenuOpen})
 }
-  render () {
+  render () {      
+
     var data = this.state.apiData;
     let userInfo = data.map(function(jsonData, index){
         return(
@@ -70,11 +80,10 @@ onMenuToggle() {
             onMenuToggle={this.onMenuToggle}
             isMenuOpen={this.state.isMenuOpen}
         />
-        <h1 className="honorarios__title">Honorarios Padrões </h1>
+        <h1 className="honorarios__title"></h1>
         <div className="honorarios__content">
             <label className="honorarios__name">Cálculo de honorários do cliente A</label>
             <label className="honorarios__author">{userInfo}</label>
-            <Link to={{pathname: '/honorario/1'}} className="honorarios__button">Detalhes</Link>
         </div>
         <div className="honorarios__back">
               <Link to="/my-honorarios" className="register__link">&#x2190; Voltar para todos os cálculos</Link> 
@@ -84,5 +93,4 @@ onMenuToggle() {
   }
 }
 
-
-export default MyHonorariosDetailed; 
+export default ListHonorarios; 

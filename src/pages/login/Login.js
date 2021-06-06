@@ -28,7 +28,7 @@ export default class Login extends Component {
         this.setState({senha: password});
     };
 
-    handleLogin = () =>{
+    handleLogin = () =>{   
         fetch(`${baseURL}/login`,{
             method: 'POST', 
             mode: 'cors',

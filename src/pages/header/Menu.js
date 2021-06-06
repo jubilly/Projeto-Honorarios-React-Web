@@ -17,10 +17,10 @@ export default class Menu extends Component {
         </div>
         <ul className="menuToggle__list">
           <li className="menuToggle__element"><Link to='/'>Início</Link></li>
-          <li className="menuToggle__element"><Link to='calc-honorarios'>Calcular Honorário</Link></li>
+          <li className="menuToggle__element"><Link to='honorarios'>Calcular Honorário</Link></li>
           {/* <li className="menuToggle__element"><Link to='my-honorarios-detailed'>Minhas Fórmulas</Link></li> */}
           <li className="menuToggle__element"><Link to='my-honorarios'>Histórico de Cálculos</Link></li>
-          <li className="menuToggle__element"><Link to='my-honorarios-detailed'>Honorários Padrões</Link></li>
+          <li className="menuToggle__element"><Link to='standard-honorarios'>Honorários Padrões</Link></li>
         </ul>
       </div>
     )

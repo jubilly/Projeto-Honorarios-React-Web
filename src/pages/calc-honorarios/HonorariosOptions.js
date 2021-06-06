@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 
-export default class HonorariosFilters extends Component {
+export default class HonorariosOptions extends Component {
   constructor(props) {
     super(props);
     this.state = {/* Awesome State Not Yet Used */}
@@ -23,7 +23,7 @@ export default class HonorariosFilters extends Component {
          </span> */}
          <span className="honorarios-content">
            <label>Histórico de Honorários</label>
-           <Link to="honorarios-history" className="honorarios-btn">Ver</Link>
+           <Link to="my-honorarios" className="honorarios-btn">Ver</Link>
          </span>
        </div>
       </div>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import baseURL from '../services/api';
 import Header from './../header/Header';
 import Menu from './../header/Menu';
-import HonorariosFilters from './HonorariosFilters';
+import HonorariosOptions from './HonorariosOptions';
 import './honorarios.css'
 
 export default class CalcHonorarios extends Component {
@@ -72,7 +72,7 @@ export default class CalcHonorarios extends Component {
                 onMenuToggle={this.onMenuToggle}
                 isMenuOpen={this.state.isMenuOpen}
             />
-            <HonorariosFilters />
+            <HonorariosOptions />
         </>
         )
     }

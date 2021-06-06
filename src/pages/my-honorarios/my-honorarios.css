@@ -21,13 +21,14 @@
     padding: 0 20px;
     border-radius: 10px;
     cursor: pointer;
-    background-color: #127A40;
+    background-color: #0d5e31;
     color: #fff;
-    border: 0;
     text-decoration: none;
+    border: 1px solid #0d5e31;
+
 }
 .honorarios__button:hover {
-    color: #127A40;
+    color: #0d5e31;
     background-color: #fff;
     border: 1px solid;
 }

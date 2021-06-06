@@ -3,12 +3,16 @@ import './my-honorarios.css'
 import Header from './../header/Header';
 import Menu from './../header/Menu';
 import baseURL from '../services/api';
+import { Link } from 'react-router-dom';
 
 class MyHonorarios extends Component{
   constructor(props){
     super(props);
     this.state = {
         apiData:[],
+        allHonorarios:[],
+        eachHonorarioNome:[],
+        idHonorario:[],
         usuario: '',
         senha: '',
         status: true,
@@ -37,7 +41,51 @@ componentDidMount = async () =>{
     }).then((data) => {
         this.setState({apiData: data})
     })
+
+    var usuarioLogado = '';
+    if(localStorage.length > 0){
+        usuarioLogado = localStorage.getItem('@honorarios/id')
+    }
+    fetch(`${baseURL}/getAllHonorarios/${usuarioLogado}`,{
+        method: 'GET',
+        mode: 'cors',
+        headers:{
+            'Accept':'application/json',
+            'Content-Type': 'application/json',
+        },
+    }).then((responseData)=>{
+        return responseData.json();
+    }).then((data) => {
+        let array = []
+        data.map(calculos => {
+          array.push([calculos.nome.toString(), 
+            new Date (calculos.data_calculo.toString()).toLocaleDateString("sq-AL",{ year: 'numeric', month: '2-digit', day: '2-digit' }),
+            calculos.id_calculo_honorario,
+            calculos.descricao
+         ])
+          this.setState({allHonorarios: array})
+        })
+    })
 }
+
+seeMore = (e, item) =>{
+    var currentButton = e.target.value
+    fetch(`${baseURL}/honorariosCalc/${currentButton}`,{
+        method: 'GET',
+        mode: 'cors',
+        headers:{
+            'Accept':'application/json',
+            'Content-Type': 'application/json',
+        },
+    }).then((responseData)=>{
+        return responseData.json();
+    }).then((data) => {
+          this.setState({eachHonorarioNome: data})
+    })
+    
+
+}
+
 handleLogout = () => {
   localStorage.removeItem('@honorarios/id');
 }
@@ -55,6 +103,21 @@ render(){
             </>
         )
     })
+    console.log(this.state.eachHonorarioNome)
+    var honorarios = this.state.allHonorarios;
+    var arrayHonorarios = honorarios.map((item, index)=>{
+        return(
+            <>
+                <div className="honorarios__content">
+                    <div className="honorarios__titles">
+                        <label className="honorarios__name">{item[0]}</label>
+                        <label className="honorarios__data">{item[1]}</label>
+                    </div>
+                    <button onClick={this.seeMore} value={item[2]} className="honorarios__button">Detalhes</button>
+                </div>
+            </>
+        )
+    })
     return (
       <>
         <Header
@@ -64,20 +127,25 @@ render(){
             showMenuInfo={true}
             MenuToggle={true}
             onMenuToggle={this.onMenuToggle}
-
         />
         <Menu
-            onMenuToggle={this.onMenuToggle}
+            onMenuToggle={this.onMenuToggle}    
             isMenuOpen={this.state.isMenuOpen}
         />
-       <h1 className="honorarios__title">Meus Honorarios</h1>
-       <div className="honorarios__content">
-           <label className="honorarios__name">Cálculo de honorários do cliente A</label>
-           <label className="honorarios__author">{userInfo}</label>
-           <a href="my-honorarios-detailed" className="honorarios__button">Ver Detalhes</a>
-       </div>
+       {arrayHonorarios}
+       <div className="new_calc new_calc__modal">
+       {this.state.eachHonorarioNome.map(honorario => {
+        return(
+            <>
+             <label className="new_calc_title new_calc_titles--bold">Nome registrado</label>
+            <p>{honorario.nome_entrada}</p>
+            <p>{honorario.valor}</p>
+            </>
+        )
+        })}
+        </div>
        <div className="honorarios__back">
-            <a href="/" className="register__link">&#x2190; Voltar para página inicial</a> 
+            <Link to="honorarios" className="register__link">&#x2190; Voltar</Link> 
        </div>
       </>
     )
