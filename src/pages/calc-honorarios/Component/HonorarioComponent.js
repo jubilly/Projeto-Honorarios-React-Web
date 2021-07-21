@@ -20,7 +20,7 @@ export default class HonorarioComponent extends Component {
             <span className="new_calc_column-name">
             </span>
             <div className="new_calc_column__group">
-                <input className="new_calc_column-input" onChange={(e)=> this.props.columnName(e, this.props.index)} placeholder="Digite o nome do campo"/>
+                <input className="new_calc_column-input" onChange={(e)=> this.props.f(e, this.props.index)} placeholder="Digite o nome do campo"/>
                 <input className="new_calc_column-input" onChange={(e)=> this.props.columnValue(e, this.props.index)} onKeyUp={(event)=>this.props.calculaFuncao(event, this.props.index)} placeholder="Digite o valor do campo"/>
             </div>
         </div>

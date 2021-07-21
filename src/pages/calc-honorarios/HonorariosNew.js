@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Header from './../header/Header';
 import Menu from './../header/Menu';
 import baseURL from '../services/api';
-import HonorarioComponent from './Component/HonorarioComponent'
 import HonorarioGroup from './Component/HonorarioGroup'
 
 class HonorariosNews extends Component {
@@ -52,7 +51,7 @@ class HonorariosNews extends Component {
         let userInfo = data.map(function(jsonData, index){
             return(
                 <>
-                    {jsonData.nome}
+                    <p>{jsonData.nome}</p>
                 </>
             )
         })

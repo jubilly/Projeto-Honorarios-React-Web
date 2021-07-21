@@ -210,7 +210,7 @@ export default class HonorarioGroup extends Component {
         this.state.operador[index] = e.target.value
         this.setState({operador: this.state.operador})
     }
-
+    
     columnSaidaValores = (e, index) =>{
         this.state.columnSaidaValores[index] = e.target.value;
         this.setState({columnSaidaValores: this.state.columnSaidaValores})
